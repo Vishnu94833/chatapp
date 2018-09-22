@@ -1,0 +1,24 @@
+{
+  "name": "project_chatapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vishnu94833/chatapp_project.git"
+  },
+  "author": "vishnu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vishnu94833/chatapp_project/issues"
+  },
+  "homepage": "https://github.com/Vishnu94833/chatapp_project#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.16"
+  }
+}
