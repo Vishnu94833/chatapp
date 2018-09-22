@@ -3,7 +3,7 @@ exports=function ConnectDB() {
     console.log("in");
     //Set up default mongoose connection
 
-    var mongoDB = 'mongodb://localhost:27017/mydb';
+    var mongoDB = 'mongodb://localhost:27017/vishnudb';
     mongoose.connect(mongoDB);
     // var db = mongoose.connection;
     mongoose.connection.on('open',function() {
