@@ -1,26 +1,25 @@
-var chatApp = angular.module('chatApp', ['ui.router']);
+var chatApp = angular.module('chatApp',['ui.router']);
 
 chatApp.config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/accountcreation');
+    $urlRouterProvider.otherwise('/register');
 
     $stateProvider
 
-    .state('accountcreation', {
-            url: '/accountcreation',
-            templateUrl: 'template/accountcreation.html'
+    .state('register', {
+            url: '/register',
+            templateUrl: 'template/registration.html',
+            controller:'registerCtrl'
         })
-        .state('created', {
-            url: '/created',
-            templateUrl: 'template/created.html'
+       
+        .state('login', {
+            url: '/login',
+            templateUrl: 'template/login.html',
+            controller:'loginCtrl'
         }) 
-        .state('login_page', {
-            url: '/login_page',
-            templateUrl: 'template/login_page.html'
-        }) 
-        .state('chat', {
-            url: '/chat',
-            templateUrl: 'template/chat.html'
-        })    
+        // .state('chat', {
+        //     url: '/chat',
+        //     templateUrl: 'template/chat.html'
+        // })    
 });
 

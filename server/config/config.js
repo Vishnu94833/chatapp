@@ -1,4 +1,4 @@
-exports=function ConnectDB() {
+exports = function ConnectDB() {
 
     console.log("in");
     //Set up default mongoose connection
@@ -6,11 +6,11 @@ exports=function ConnectDB() {
     var mongoDB = 'mongodb://localhost:27017/vishnudb';
     mongoose.connect(mongoDB);
     // var db = mongoose.connection;
-    mongoose.connection.on('open',function() {
+    mongoose.connection.on('open', function () {
         console.log(console, 'Successful:')
     });
 
-    mongoose.connection.on('error', function() {
+    mongoose.connection.on('error', function () {
         console.error.bind(console, 'MongoDB connection error:')
     });
 }

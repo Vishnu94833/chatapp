@@ -14,10 +14,6 @@ var userSchema  = new mongoSchema({
                         type: String, 
                         required: true
                     },
-                    // 'DOB':{
-                    //     type:Date,
-                    //     required:false
-                    // },
             'mobilenumber': {
                         type: Number, 
                         required: true
@@ -32,4 +28,4 @@ var userSchema  = new mongoSchema({
                         }
 });
 // create model if not exists.
-module.exports = mongoose.model('userLogin',userSchema);
+module.exports = mongoose.model('userlogins',userSchema);

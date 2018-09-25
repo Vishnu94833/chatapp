@@ -1,6 +1,6 @@
 body {
    
-    background-color: lightblue;
+    /* background-color: lightblue; */
 }
 
 h1 {
@@ -9,24 +9,53 @@ h1 {
     
     font-family: "purisa", Times, serif;
     font-style: italic;
-    color: navy;
+    color: white;
     text-align: center;
 }
 h2 {
     text-shadow: 1px 1px;
     font-family: "URW Chancery L", Times, serif;
     font-style: italic;
-    color: navy;
+    color: white;
     text-align: center;
 }
 h3 {
     
-    color: navy;
+    color: white;
     text-align: center;
 }
-body {
-    
+.log{
+    background-image: url("/asset/chatapp.jpeg");
     font-family: "purisa", Times, serif;
     font-style: italic;
-    color: navy;
+    padding: 155px;
+    color: white;
+}
+.lg{
+    background-image: url("/asset/chatapp.jpeg");
+    font-family: "purisa", Times, serif;
+    font-style: italic;
+    padding: 280px;
+    /* color: navy; */
+}
+.reg {
+    background-image: url("/asset/chatapp.jpeg");
+    font-family: "purisa", Times, serif;
+    font-style: italic;
+    padding: 80px;
+    /* color: navy; */
+}
+input{
+    align-self: auto;
+}
+label
+{
+ display: inline-block;
+ width: 140px;
+ text-align:center;  
+ color: white;
+}
+value{
+    font-family: "purisa", Times, serif;
+    font-style: italic;
 }

@@ -1,0 +1,29 @@
+<div align="center" class = "reg">
+            <h1><font color="black">CHAT_APP</font></h1>
+        <h2>Registration Form</h2>
+
+        <form >
+            <label>First Name:</label>
+            <input type="text" ng-model="user.firstname" placeholder="firstname" required  >
+            <br>
+            
+            <br /> <label>Last Name:</label>
+            <input type="text" ng-model="user.lastname" placeholder="lastname" required  >
+            <br> 
+            <br /><label>Mobile number:</label>
+            <input type="number"  ng-model="user.mobilenumber" placeholder="phone number" required >
+            <br> 
+            <br /><label>Mail ID:</label>
+            <input type="email" ng-model="user.email"  placeholder="xyz@gmail.com" required> 
+            <br> 
+            <br /><label>Create Password:</label>
+            <input type="password" ng-model="user.password" placeholder="********" required   >
+            <br>
+            <br><br>
+            <input type="submit" ng-click="register()" >
+            <input type="reset" value="reset">
+        </form>
+    </div>
+   
+    
+
