@@ -23,3 +23,9 @@ app.listen(4000);
 console.log("Listening to PORT 4000");
 
 app.use(express.static('./public'));
+
+app.get('/checking', function(req, res){
+    res.json({
+       "Tutorial": "asdfghjkl qwertyuop zxcvbnm"
+    });
+ });

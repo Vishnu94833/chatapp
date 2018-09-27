@@ -11,6 +11,7 @@ h1 {
     font-style: italic;
     color: white;
     text-align: center;
+    padding-top:100px;
 }
 h2 {
     text-shadow: 1px 1px;
@@ -35,7 +36,7 @@ h3 {
     background-image: url("/asset/chatapp.jpeg");
     font-family: "purisa", Times, serif;
     font-style: italic;
-    padding: 280px;
+    padding: 240px;
     /* color: navy; */
 }
 .reg {
@@ -59,3 +60,105 @@ value{
     font-family: "purisa", Times, serif;
     font-style: italic;
 }
+.absolute {
+    position: absolute;
+    top:10px;
+    right:0;
+    width: 80px;
+    height: 300px;
+  }
+
+  .container {
+    width: 970px;
+    padding-top:10px;
+    margin: 0 auto;
+  }
+  
+  .pure-form input.ng-dirty.ng-invalid {
+    border-color: #e9322d;
+  }
+  
+  .field-message {
+    display: inline-block;
+    color:#e9322d;
+    font-size: 90%;
+    margin-left: 0.5em;
+  }
+  
+  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+  }
+
+
+.container{
+    background-image: "../asset/chatapp.jpeg";
+    width: 1260px;
+    background-color:lightblue;
+}
+.header{
+    width: 1260px;
+    height: 100px;
+    background-color:lightblue;
+}
+.logo{
+    position:absolute;
+    top: 25px;
+    float: left;
+    width: 30px;
+    height: 30px;
+    background-color:gray;
+}
+.logout{
+    
+    float: right;
+    background-color:gray;
+}
+.area{
+    width: 1260px;
+    height: 500px;
+    background-color:white;
+}
+.leftarea{
+    float: left;
+    width: 410px;
+    height: 500px;
+    background-color:navy;
+}
+.rightarea{
+    float: right;
+    width: 840px;
+    height: 550px;
+    background-color:navy;
+}
+.users{
+    
+    width: 440px;
+    height: 550px;
+    background-color:lightblue;
+}
+.messagebox{
+    
+    width: 820px;
+    height: 450px;
+    background-color:rgb(205, 208, 209);
+}
+.typing{
+    
+    width: 820px;
+    height: 100px;
+    background-color:green;
+}
+.typingmessage{
+    float: left;
+    width: 750px;
+    height: 100px;
+    background-color:orange;
+}
+ 
+.send{
+    
+    float: right;
+    width: 40px;
+    height: 100px;
+    background-color:magenta;
+} 

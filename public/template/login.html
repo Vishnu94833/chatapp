@@ -2,20 +2,25 @@
 
         <br /> <br /> <br /> 
         <h2>Log-in Page</h2><br />
-        <form > 
         Email ID:
-        <input type="text"  ng-model="user.email" placeholder="login id" required >
+        <input type="email"  ng-model="user.email" placeholder="login id" required >
         <br>
 
         <br /> Password:
-        <input type="password" ng-model="user.password" placeholder="********" required >
+        <input type="password" ng-model="user.password" placeholder="********" required  ng-minlength="6" ng-maxlength="10" >
         <br>
         <br />
 
-
-        <input type="submit" value="sign in"  align="center">
-    </form>
-    <form >
-            <input type="submit" value="sign up"  align="center">
-        </form>
+       
+       <button type="button" value="Submit" ng-click="login()">Sign in</button>
+       <a href="#/registration"> Sign up </a>
+       
+      
+        <div>
+                <p>
+                    {{message}}
+    
+                </p>
+            </div>
+     
     </div>

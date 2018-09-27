@@ -1,29 +1,70 @@
-<div align="center" class = "reg">
-            <h1><font color="black">CHAT_APP</font></h1>
-        <h2>Registration Form</h2>
+<div align="center" class="reg">
+    <h1>
+        <font color="black">CHAT_APP</font>
+    </h1>
+    <h2>Registration Form</h2>
 
-        <form >
-            <label>First Name:</label>
-            <input type="text" ng-model="user.firstname" placeholder="firstname" required  >
-            <br>
-            
-            <br /> <label>Last Name:</label>
-            <input type="text" ng-model="user.lastname" placeholder="lastname" required  >
-            <br> 
-            <br /><label>Mobile number:</label>
-            <input type="number"  ng-model="user.mobilenumber" placeholder="phone number" required >
-            <br> 
-            <br /><label>Mail ID:</label>
-            <input type="email" ng-model="user.email"  placeholder="xyz@gmail.com" required> 
-            <br> 
-            <br /><label>Create Password:</label>
-            <input type="password" ng-model="user.password" placeholder="********" required   >
-            <br>
-            <br><br>
-            <input type="submit" ng-click="register()" >
-            <input type="reset" value="reset">
-        </form>
+    <form name="myForm" ng-app="chatApp" novalidate>
+        <label>First Name:</label>
+        <input type="text" ng-model="user.firstname" name="firstname" minlength="3" ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,60}$/" name="firstname"
+            placeholder="firstname" required>
+        <span style="color:red" ng-show="myForm.firstname.$dirty && myForm.firstname.$invalid" class="ng-hide">firstname
+            is required.</span>
+        </span>
+        <br>
+
+        <br /> <label>Last Name:</label>
+        <input type="text" ng-model="user.lastname" minlength="1" ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,60}$/" name="lastname" autocomplete="off"
+            placeholder="lastname" required>
+        <span style="color:red" ng-show="myForm.lastname.$dirty && myForm.lastname.$invalid" class="ng-hide">lastname is
+            required.
+        </span>
+        </span>
+        <br>
+        <!-- <br /><label>Mobile number:</label>
+        <input type="number" ng-model="user.mobilenumber" name="mobilenumber" placeholder="phone number" required> -->
+        <br><label>Phone Number:</label>
+        <input type="number" name="mobilenumber" maxlength="10" ng-pattern="/^[7-9][0-9]{9}$/" autocomplete="off" ng-model="user.mobilenumber"
+            required/>
+        <span style="color:red" ng-show="myForm.mobilenumber.$dirty && myForm.mobilenumber.$invalid" class="ng-hide">
+            Please Enter Valid Mobile No.!
+        </span><br>
+
+
+
+        <br /><label>Mail ID:</label>
+        <input type="email" maxlength="100" required ng-pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/" name="email" ng-model="email"
+            autocomplete="off" required>
+        <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid" class="ng-hide">
+            <span ng-show="myForm.email.$error.required">Email is required.</span>
+            <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+        </span>
+
+        <br>
+        <br />
+
+        <!-- <div class="pure-control-group"> -->
+        <label>Create Password:</label>
+        <input type="password" ng-model="user.password" value="password" autocomplete="off" placeholder="********" required>
+        <span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid" class="ng-hide">
+            <span ng-show="myForm.password.$error.required">Password is required.</span>
+            <span ng-show="myForm.password.$error.password">Invalid Password.</span>
+        </span>
+        <br>
+        <br>
+        <a href="#/login"> Login </a>
+        <button type="button" value="Submit" ng-click="register()">Register</button>
+
+    </form>
+
+    <br>
+    <div>
+        {{message}}
     </div>
-   
-    
 
+</div>
+
+
+
+
+</div>

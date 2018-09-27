@@ -3,6 +3,11 @@ var express = require('express');
 var router = express.Router();
 var app = express();
 var users = require('../controller/usercontroller')
+var auth = require('../router/authRouter.js');
+
+var jwt = require('jsonwebtoken');
+var bcrypt = require('bcryptjs');
+var config = require('../config/auth.js');
 
 
 const { check, validationResult } = require('express-validator/check');
@@ -12,7 +17,7 @@ var usermod = require('../model/users.js');
 var db = new usermod();
 var response = {};
 
-
+router.use('/auth', auth);
 
 router.post("/login", function (req, res) {
     var usermod = require('../model/users.js');
@@ -29,21 +34,30 @@ router.post("/login", function (req, res) {
         .digest('base64');
     usermod.find({ "email": db.email, "password": db.password }, function (err, result) {
 
-       
+        // var token = jwt.sign({ id: user._id }, config.secret, {
+        //     expiresIn: 86400 // expires in 24 hours
+        //   });
+        //   res.status(200).send({ auth: true, token: token });
         if (err) {
             response = {
                 "Success": false,
                 "message": "Create account to login"
             };
 
-            return res.status(400).send(err);
+            return res.status(404).send(err);
 
 
         } else {
             if (result.length > 0) {
+
+                var token = jwt.sign({ id: db._id }, config.secret, {
+                    expiresIn: 86400 // expires in 24 hours
+                });
                 var response = {
                     "Success": true,
-                    "message": "Login Sucessfully"
+                    "message": "Login Sucessfully",
+                    "token": token,
+                    "userid": result[0]._id
 
                 };
                 return res.status(200).send(response);
@@ -84,12 +98,6 @@ router.post('/register', [
         .update(req.body.password)
         .digest('base64');
 
-    // var fname = req.body.firstname;
-    // var lname = req.body.lastname;
-    // var mobile = req.body.mobilenumber;
-    // var mail = req.body.email;
-    // var pass = req.body.password;
-    // //check(mail).isEmail();
     usermod.find({ "email": db.email }, function (err, data) {
         if (data.length > 0) {
             response = {
@@ -115,7 +123,7 @@ router.post('/register', [
                     }
                 }
                 else {
-                    response = { "error": false, "message": "data added" }
+                    response = { "error": false, "message": "registration successful" }
                 }
                 return res.status(202).send(response);
             });
@@ -123,6 +131,9 @@ router.post('/register', [
     });
 
 });
+
+
+
 app.use('/', router);
 
 // ConnectDB();
