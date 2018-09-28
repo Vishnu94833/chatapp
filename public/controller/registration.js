@@ -8,7 +8,7 @@ chatApp.controller('registerCtrl', function($scope, $http) {
         'email': '',
         'password': ''
     }
-    // console.log($scope.user);
+    console.log($scope.user);
     $scope.register = function(){
         // console.log("register calling", $scope.user);
     $http({

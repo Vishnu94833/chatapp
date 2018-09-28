@@ -8,28 +8,28 @@
   <title>home page</title>
 
 </head>
-<center>
+<!-- <center> -->
 
-  <body>
+  <body  background="../asset/chatapp.jpeg">
+    <!-- <img  src="../asset/chatapp.jpg"> -->
     <div>
       <link rel="stylesheet" href="../asset/style.css">
-      <div class="container">
+      <div class="container1" >
         <div class="header">
           <h2>ChatApp</h2>
-          <!-- <center>
-            <h1>ChatApp</h1>
-          </center> -->
-          <!-- <div class="logo"> -->
-            <!-- <img src="../asset/chatapp.jpeg" height="70px" width="70px"> -->
-          <!-- </div> -->
           <div class="logout">
             <a href="#/login"><button type="logout" value="logout">logout</button></a>
           </div>
         </div>
-        <div class="area">
+        <div class="area" >
           <div class="leftarea">
             <div class="users">
-              <center>contacts</center>
+             <center><p font color="black">contacts</p></center>
+              <ol>
+                  <li ng-repeat="key in arr">
+                    <font color="black" >{{key}}</font></li>
+                
+                </ol>
             </div>
           </div>
           <div class="rightarea">
@@ -37,9 +37,13 @@
               <center>chatbox</center>
             </div>
             <div class="typing">
-              <div class="typingmessage"></div>
+              <div class="typingmessage">
+                <textarea rows="6" cols="85">
+                  Type your message here....
+                </textarea>
+              </div>
               <div class="send">
-                <center>send </center>
+                <center><button type="button" value="send">send</button> </center>
               </div>
             </div>
 
@@ -48,6 +52,6 @@
       </div>
     </div>
   </body>
-</center>
+<!-- </center> -->
 
 </html>
