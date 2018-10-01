@@ -5,4 +5,6 @@ var users = require('../controller/usercontroller.js');
 var auth = require('../authentication/index.js');
 
 router.get('/users/:id/list',auth, users.listOfUsers);
+router.get('/users/:id/msgs',auth, users.getmg);
+
 module.exports = router;

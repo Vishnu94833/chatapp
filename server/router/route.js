@@ -14,10 +14,10 @@ const { check, validationResult } = require('express-validator/check');
 
 var usermod = require('../model/users.js');
 // var validator=require('express-validator');
-var response = {};
+var response = [];
 
 router.use('/auth', auth);
-
+router.get('/users/getmg',users.getmg)
 router.post("/login", function (req, res) {
     var usermod = require('../model/users.js');
     var db = new usermod();
@@ -56,7 +56,8 @@ router.post("/login", function (req, res) {
                     "Success": true,
                     "message": "Login Sucessfully",
                     "token": token,
-                    "userid": result[0]._id
+                    "userid": result[0]._id,
+                    "username": result[0].email
 
                 };
                 return res.status(200).send(response);

@@ -8,43 +8,45 @@ h1 {
     
         text-shadow: 2px 1px;
     
-    font-family: "purisa", Times, serif;
-    font-style: italic;
-    color: white;
+    /* font-family: "purisa", Times, serif; */
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
+    color: black;
     text-align: center;
-    padding-top:100px;
+    padding-top:95px;
 }
 h2 {
     text-shadow: 1px 1px;
-    font-family: "URW Chancery L", Times, serif;
-    font-style: italic;
-    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
+    color: black;
     text-align: center;
 }
 h3 {
     
-    color: white;
+    color: black;
     text-align: center;
 }
 .log{
     background-image: url("/asset/chatapp.jpeg");
-    font-family: "purisa", Times, serif;
-    font-style: italic;
-    padding: 155px;
-    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
+    padding: 150px;
+    color: black;
 }
 .lg{
     background-image: url("/asset/chatapp.jpeg");
     font-family: "purisa", Times, serif;
-    font-style: italic;
+    font-style: normal;
     padding: 240px;
     /* color: navy; */
 }
 .reg {
     background-image: url("/asset/chatapp.jpeg");
-    font-family: "purisa", Times, serif;
-    font-style: italic;
-    padding: 80px;
+    font-family: 'Courier New', Courier, monospace;
+    /* font-style: italic; */
+    font-style: normal;
+    padding: 0px;
     /* color: navy; */
 }
 input{
@@ -55,11 +57,11 @@ label
  display: inline-block;
  width: 140px;
  text-align:center;  
- color: white;
+ color: black;
 }
 value{
-    font-family: "purisa", Times, serif;
-    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
 }
 .absolute {
     position: absolute;
@@ -109,6 +111,7 @@ value{
     float: left;
     width: 30px;
     height: 30px;
+    
     /* background-color:rgb(21, 180, 133); */
 }
 .logout{
@@ -127,21 +130,23 @@ value{
     float: left;
     width: 410px;
     height: 550px;
+    overflow:scroll;
     /* opacity: 0.5;
     filter: alpha(opacity=50); */
     background-color:rgba(23, 150, 209, 0.932);
 }
 .rightarea{
     float: right;
-    width: 840px;
+    width: 820px;
     height: 550px;
+    
     /* opacity: 0.5;
     filter: alpha(opacity=50); */
-    background-color:rgba(23, 150, 209, 0.932);
+    background-color:rgba(161, 203, 223, 0.932);
 }
 .users{
-    font-size: 25px;
-    
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
     width: 440px;
     height: 550px;
     /* opacity: 0.5;
@@ -149,9 +154,11 @@ value{
     /* background-color:lightblue; */
 }
 .messagebox{
-    font-size: 25px;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
     width: 820px;
     height: 450px;
+    overflow:scroll;
     /* opacity: 0.5;
     filter: alpha(opacity=50); */
     /* background-color:lightblue  ; */
@@ -168,13 +175,42 @@ value{
     height: 100px;
     background-color:white;
 }
- 
+#left{
+    position: relative;
+    background: #00aabb;
+    border-radius: .4em;
+    /* border: 2px solid #dedede; */
+    /* background-color: #f1f1f1; */
+    /* border-radius: 5px; */
+    padding: 12px;
+    margin: 10px;
+    width: 58%;
+    height: 60px;
+    font-size: 15px;
+    color: #031268;
+    float: left;
+}
+#right{
+    position: relative;
+    background: #00aabb;
+    border-radius: .4em;
+    /* border: 2px solid #dedede; */
+    /* background-color: #f1f1f1; */
+    /* border-radius: 5px; */
+    padding: 12px;
+    margin: 10px;
+    width: 58%;
+    height: 60px;
+    font-size: 15px;
+    color: #031268;
+    float: left;
+}
 .send{
     font-size: 20px;
     float: right;
-    width: 90px;
-    height: 100px;
-    opacity: 0.5;
-    filter: alpha(opacity=50);
+    width: 120px;
+    height: 95px;
+    /* opacity: 0.5;
+    filter: alpha(opacity=50); */
     /* background-color:lightskyblue; */
 } 

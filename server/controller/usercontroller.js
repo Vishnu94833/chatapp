@@ -44,35 +44,83 @@ exports.login = function (req, res) {
 
 
 
-exports.listOfUsers=function (req,res) {
+exports.listOfUsers = function (req, res) {
     // return res.status(200).send("all good");
     var userModel = require('../model/users.js');
     var response = {};
-    var arrList=[];
-    var userid=req.params.id;
-    userModel.find({"_id":{$ne:userid }},function (err,data) {
+    var arrList = [];
+    var userid = req.params.id;
+    userModel.find({ "_id": { $ne: userid } }, function (err, data) {
         console.log(data);
-        for(key in data){
-                arrList.push({firstname:data[key].firstname,
-                                        userid:data[key]._id});
+        for (key in data) {
+            arrList.push({
+                firstname: data[key].firstname,
+                userid: data[key]._id
+            });
         }
-        if(err)
-            {
-                response={ "error":true,
-                            "message":"error retrieving data"
-                }
+        if (err) {
+            response = {
+                "error": true,
+                "message": "error retrieving data"
             }
-            else{
-                response={
-                    "error":false,
-                    "message":arrList
-                }
+        }
+        else {
+            response = {
+                "error": false,
+                "message": arrList
             }
+        }
         return res.status(200).send(response);
     })
 }
 
 
+exports.addtodb=function (userid,firstname,message,date) {
+    var userModel = require('../model/messages');
+    var db = new userModel();
+    var response={};
+    db.message=message;
+    db.date=date;
+    db.userid=userid;
+    db.firstname=firstname;
+    db.save(function (err) {
+        if (err) {
+            response = {
+                "error": true,
+                "message": "error storing data"
+            }
+        }
+        else {
+            response = { "error": false, "message": "succesfully added to database" }
+        }
+    });
+    console.log(response)
+
+}
+exports.getmg=function(req,res){
+    var userModel = require('../model/messages');
+    var response = {};
+    userModel.find({},function(err,data){
+        if(data){
+            response={
+                "error":false,
+                "message":data
+                
+            }
+            res.status(200).send(response);
+        }
+        else{
+            response={
+                "error":true,
+                "message":"something went wrong",
+                
+            }
+            console.log(err);
+            res.status(401).send(response);
+        }
+       
+    })
+}
 
 
 

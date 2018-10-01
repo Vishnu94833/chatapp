@@ -10,48 +10,69 @@
 </head>
 <!-- <center> -->
 
-  <body  background="../asset/chatapp.jpeg">
-    <!-- <img  src="../asset/chatapp.jpg"> -->
-    <div>
-      <link rel="stylesheet" href="../asset/style.css">
-      <div class="container1" >
-        <div class="header">
-          <h2>ChatApp</h2>
-          <div class="logout">
-            <a href="#/login"><button type="logout" value="logout">logout</button></a>
+<body background="../asset/chatapp.jpeg">
+  <!-- <img  src="../asset/chatapp.jpg"> -->
+  <div>
+    <link rel="stylesheet" href="../asset/style.css">
+    <div class="container1">
+      <div class="header">
+        <center>
+          <p style="font-size: 30px; font-style: normal; color: black;">ChatApp</p>
+        </center>
+        <div class="logo">
+          <img src="../asset/chatapp_logo.jpeg" height="70px" width="70px">
+        </div>
+        <div class="logout">
+          <a href="#/login"><button type="logout" value="logout" style="padding:10px; width:80px ">logout</button></a>
+        </div>
+      </div>
+      <div class="area">
+        <div class="leftarea">
+          <div class="users">
+            <center>
+              <p style="color: black">Contacts</p>
+            </center>
+            <ol>
+              <li ng-repeat="key in arr" >
+                <font color="black">{{key}}</font>
+              </li>
+
+            </ol>
           </div>
         </div>
-        <div class="area" >
-          <div class="leftarea">
-            <div class="users">
-             <center><p font color="black">contacts</p></center>
-              <ol>
-                  <li ng-repeat="key in arr">
-                    <font color="black" >{{key}}</font></li>
-                
-                </ol>
+        <div class="rightarea">
+          <div class="messagebox">
+            <center style="color: black">Chatbox</center>
+            <div>
+            <ul  ng-repeat="key in msgArr track by $index">
+              
+              <h3>{{key.username}}:{{key.message}}</h3>
+              <h5>{{key.date | date:'medium'}}</h5>
+              <!-- <p  id="left" ng-if = "currUser != chat.userName">{{key.username}} : 
+                          <span >{{key.message}}</span><br><br>
+                          <span id="time">{{key.date | date: 'medium'}}</span></p>
+                              <p id="right" ng-if = "currUser == key.userName">{{key.username}} : 
+                                <span>{{key.message}}</span><br><br>
+                                <span id="time">{{key.date | key: 'medium'}}</span></p> -->
+            </ul>
             </div>
           </div>
-          <div class="rightarea">
-            <div class="messagebox">
-              <center>chatbox</center>
-            </div>
-            <div class="typing">
-              <div class="typingmessage">
-                <textarea rows="6" cols="85">
-                  Type your message here....
+          <div class="typing">
+            <div class="typingmessage">
+              <textarea rows="6" cols="85" placeholder = "Type message" ng-model = 'message'>
+                 
                 </textarea>
-              </div>
-              <div class="send">
-                <center><button type="button" value="send">send</button> </center>
-              </div>
             </div>
-
+            <div class="send">
+              <center><button type="button" value="send" ng-click="sendMessage()" style="padding:10px; width:80px ">send</button> </center>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 <!-- </center> -->
 
 </html>
