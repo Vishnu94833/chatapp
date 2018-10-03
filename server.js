@@ -28,7 +28,7 @@ io.on('connection', function (client) {
    
 
 client.on('tobackend',function (data) {
-    users.addtodb(data.userid, data.firstname,data.message,data.date);
+    users.addtodb(data.userid,data.message,data.date, data.username);
                 // data.userid, data.username,
     io.emit('tofrontend',data)
 })

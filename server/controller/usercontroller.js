@@ -25,7 +25,10 @@ exports.login = function (req, res) {
             if (result.length > 0) {
                 var response = {
                     "Success": true,
-                    "message": "Login Sucessfully"
+                    "message": "Login Sucessfully",
+                    "token":token,
+                    "userid":result[0]._id,
+                    "username":result[0].firstname+" "+result[0].lastname
 
                 };
                 return res.status(200).send(response);
@@ -75,14 +78,14 @@ exports.listOfUsers = function (req, res) {
 }
 
 
-exports.addtodb=function (userid,firstname,message,date) {
+exports.addtodb=function (userid,message,date,username) {
     var userModel = require('../model/messages');
     var db = new userModel();
     var response={};
     db.message=message;
     db.date=date;
     db.userid=userid;
-    db.firstname=firstname;
+    db.username=username;
     db.save(function (err) {
         if (err) {
             response = {
@@ -91,12 +94,42 @@ exports.addtodb=function (userid,firstname,message,date) {
             }
         }
         else {
+            console.log("testing......");
             response = { "error": false, "message": "succesfully added to database" }
         }
     });
     console.log(response)
 
 }
+
+
+exports.singlechat=function (senderid,sendername,receiverid,receivername,message,date) {
+    var userModel = require('../model/messages');
+    var db = new userModel();
+    var response={};
+    db.senderid=senderid;
+    db.sendername=sendername;
+    db.receiverid=receiverid;
+    db.receivername=receivername;
+    db.message=message;
+    db.date=date;
+    db.save(function (err) {
+        if (err) {
+            response = {
+                "error": true,
+                "message": "error storing data"
+            }
+        }
+        else {
+            console.log("testing......");
+            response = { "error": false, "message": "succesfully added to database" }
+        }
+    });
+    console.log(response)
+
+}
+
+
 exports.getmg=function(req,res){
     var userModel = require('../model/messages');
     var response = {};
