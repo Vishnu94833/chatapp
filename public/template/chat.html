@@ -30,17 +30,19 @@
         <div class="leftarea">
           <div class="users" class="reflect">
             <center>
+              <div>
               <p style="color: black">Contacts</p>
+            </div>
             </center>
             <ol>
-              <li ng-repeat="key in arr">
+              <li ng-repeat="key in arr" ng-click="singleconv(key)">
                 <font color="black">{{key}}</font>
               </li>
             </ol>
           </div>
         </div>
         <div class="rightarea">
-          <div class="messagebox" class="reflect">
+          <div class="messagebox" class="reflect" ng-if="val==0">
             <center style="color: black">Chatbox</center>
             <div>
               <!-- <ul  ng-model = "message" ng-repeat="key in msgArr track by $index"> -->
@@ -57,6 +59,8 @@
               </div>
               <!-- </ul> -->
             </div>
+          </div>
+          <div class="messagebox" ng-if="val==1">
           </div>
           <div class="typing">
             <div class="typingmessage">

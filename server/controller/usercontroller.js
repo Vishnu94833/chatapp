@@ -26,9 +26,9 @@ exports.login = function (req, res) {
                 var response = {
                     "Success": true,
                     "message": "Login Sucessfully",
-                    "token":token,
-                    "userid":result[0]._id,
-                    "username":result[0].firstname+" "+result[0].lastname
+                    "token": token,
+                    "userid": result[0]._id,
+                    "username": result[0].firstname + " " + result[0].lastname
 
                 };
                 return res.status(200).send(response);
@@ -78,14 +78,14 @@ exports.listOfUsers = function (req, res) {
 }
 
 
-exports.addtodb=function (userid,message,date,username) {
+exports.addtodb = function (userid, message, date, username) {
     var userModel = require('../model/messages');
     var db = new userModel();
-    var response={};
-    db.message=message;
-    db.date=date;
-    db.userid=userid;
-    db.username=username;
+    var response = {};
+    db.message = message;
+    db.date = date;
+    db.userid = userid;
+    db.username = username;
     db.save(function (err) {
         if (err) {
             response = {
@@ -103,16 +103,16 @@ exports.addtodb=function (userid,message,date,username) {
 }
 
 
-exports.singlechat=function (senderid,sendername,receiverid,receivername,message,date) {
-    var userModel = require('../model/messages');
+exports.singlechat = function (senderid, sendername, receiverid, receivername, message, date) {
+    var userModel = require('../model/singlechat');
     var db = new userModel();
-    var response={};
-    db.senderid=senderid;
-    db.sendername=sendername;
-    db.receiverid=receiverid;
-    db.receivername=receivername;
-    db.message=message;
-    db.date=date;
+    var response = {};
+    db.senderid = senderid;
+    db.sendername = sendername;
+    db.receiverid = receiverid;
+    db.receivername = receivername;
+    db.message = message;
+    db.date = date;
     db.save(function (err) {
         if (err) {
             response = {
@@ -130,91 +130,54 @@ exports.singlechat=function (senderid,sendername,receiverid,receivername,message
 }
 
 
-exports.getmg=function(req,res){
+exports.getmg = function (req, res) {
     var userModel = require('../model/messages');
     var response = {};
-    userModel.find({},function(err,data){
-        if(data){
-            response={
-                "error":false,
-                "message":data
-                
+    userModel.find({}, function (err, data) {
+        if (data) {
+            response = {
+                "error": false,
+                "message": data
+
             }
             res.status(200).send(response);
         }
-        else{
-            response={
-                "error":true,
-                "message":"something went wrong",
-                
+        else {
+            response = {
+                "error": true,
+                "message": "something went wrong",
+
             }
             console.log(err);
             res.status(401).send(response);
         }
-       
+
     })
 }
 
 
 
+exports.getsinglechat = function (req, res) {
+    var userModel = require('../model/singlechat');
+    var response = {};
+    userModel.find({}, function (err, data) {
+        if (data) {
+            response = {
+                "error": false,
+                "message": data
 
+            }
+            res.status(200).send(response);
+        }
+        else {
+            response = {
+                "error": true,
+                "message": "something went wrong",
 
+            }
+            console.log(err);
+            res.status(401).send(response);
+        }
 
-
-
-
-
-
-
-
-
-
-// exports.registration = function (req, res) {
-
-//     const { check } = require('express-validator/check')
-
-//     var usermod = require('../model/users.js');
-//     var validator = require('express-validator');
-//     var db = new usermod();
-//     var response = {};
-
-//     db.post('/register', [
-//         check('firstname').isLength({ min: 3 }),
-//         check('lastname').isLength({ min: 3 }),
-//         check('mobilenumber').isMobilePhone("en-IN"),
-//         check('email').isEmail(),
-//         check('password').isLength({ min: 5 })
-//     ], (req, res) => {
-//         const firstname = req.body.firstname
-//         const lastname = req.body.lastname
-//         const mobilenumber = req.body.mobilenumber
-//         const email = req.body.email
-//         const password = req.body.password
-
-
-//         db.firstname = req.body.firstname;
-//         db.lastname = req.body.lastname;
-//         db.mobilenumber = req.body.mobilenumber;
-
-//         db.email = req.body.email;
-//         // Hash the password using SHA1 algorithm.
-//         db.password = require('crypto')
-//             .createHash('sha1')
-//             .update(req.body.password)
-//             .digest('base64');
-//         db.save(function (err) {
-//             // save() will run insert() command of MongoDB.
-//             // it will add new data in collection.
-//             if (err) {
-//                 response = { "error": true, "message": "Error adding data", "err": err };
-//             } else {
-//                 response = { "error": false, "message": "Data added" };
-//             }
-//             res.json(response);
-//         });
-//     })
-//     //   console.log(res)
-
-
-// }
-
+    })
+}

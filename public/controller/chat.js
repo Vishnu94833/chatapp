@@ -35,6 +35,8 @@ chatApp.controller('homeCtrl', function ($scope, $http, $location, SocketService
     var id=localStorage.getItem("userid");
     var username=localStorage.getItem("username");
     $scope.currUser=username;
+    $scope.val=0;
+
     console.log("id is"+id)
        var arr=[];
        var msgArr=[];
@@ -85,5 +87,12 @@ chatApp.controller('homeCtrl', function ($scope, $http, $location, SocketService
             $location.path('/login')
     
         }
+
+        $scope.singleconv=function(username)
+        {
+            console.log(username);
+            $scope.val=1;
+        }
+
     
     })

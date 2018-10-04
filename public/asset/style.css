@@ -227,6 +227,8 @@ textarea {
     color: black;
     float: right;
     word-wrap: break-word;
+        height: fit-content;
+
 }
 #right{
     position: relative;
@@ -243,6 +245,7 @@ textarea {
     color: black;
     float: left;
     word-wrap: break-word;
+    height: fit-content;
 
 }
 .send{
