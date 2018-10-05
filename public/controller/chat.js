@@ -1,35 +1,3 @@
-// chatApp.controller('homeCtrl', function ($scope, $http, $location) {
-//     var mytoken = localStorage.getItem("token");
-//     var id = localStorage.getItem("userid");
-//     console.log("id is" + id)
-//     var arr = [];
-//     $http({
-//         method: 'GET',
-//         url: 'auth/users/' + id + '/list',
-//         headers: {
-//             'token': mytoken
-//         }
-//     }).then(function (response) {
-//         console.log(response.data.message)
-//         for (var i = 0; i < (response.data.message).length; i++) {
-//             arr.push(response.data.message[i].firstname)
-//         }
-//         console.log(arr);
-//     })
-//     $scope.arr = arr;
-//     $scope.logout = function () {
-//         localStorage.removeItem(token);
-//         localStorage.removeItem(userid);
-//         $location.path('/login')
-
-//     }
-//     var socket = io.connect('http://localhost:4000');
-
-// })
-
-
-
-
 chatApp.controller('homeCtrl', function ($scope, $http, $location, SocketService) {
     var mytoken = localStorage.getItem("token");
     var id=localStorage.getItem("userid");
@@ -48,13 +16,20 @@ chatApp.controller('homeCtrl', function ($scope, $http, $location, SocketService
         }
     }).then(function (response) {
         // console.log(response.data.message)
-        for(var i=0;i<(response.data.message).length;i++){
-            arr.push(response.data.message[i].firstname)
-        }
+        // for(var i=0;i<(response.data.message).length;i++){
+        //     arr.push(response.data.message[i].firstname)
+        // }
         // console.log(arr);
-    })
+        arr=response.data.message;
         $scope.arr = arr;
-    
+    })
+        // $scope.arr = arr;
+        $scope.person=function(userdata){
+            // console.log(firstname)
+            localStorage.setItem('rusername',userdata.firstname);
+            localStorage.setItem('ruserid',userdata.userid);
+            // console.log(userid)
+            $location.path('/peer')        }
     
         $scope.sendMessage = function () {
             SocketService.emit('tobackend', { "userid": id, "message": $scope.message, "date": new Date(),"username":username })
@@ -88,11 +63,6 @@ chatApp.controller('homeCtrl', function ($scope, $http, $location, SocketService
     
         }
 
-        $scope.singleconv=function(username)
-        {
-            console.log(username);
-            $scope.val=1;
-        }
 
     
     })

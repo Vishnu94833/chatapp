@@ -22,6 +22,11 @@ chatApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'template/chat.html',
             controller: 'homeCtrl'
         })
+        .state('peer', {
+            url: '/peer',
+            templateUrl: 'template/peer.html',
+            controller: 'singleChatCntrl'
+        })
 });
 
 

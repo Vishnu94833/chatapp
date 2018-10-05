@@ -58,7 +58,7 @@ exports.listOfUsers = function (req, res) {
         for (key in data) {
             arrList.push({
                 firstname: data[key].firstname,
-                userid: data[key]._id
+                userid: data[key].id
             });
         }
         if (err) {
@@ -103,37 +103,12 @@ exports.addtodb = function (userid, message, date, username) {
 }
 
 
-exports.singlechat = function (senderid, sendername, receiverid, receivername, message, date) {
-    var userModel = require('../model/singlechat');
-    var db = new userModel();
-    var response = {};
-    db.senderid = senderid;
-    db.sendername = sendername;
-    db.receiverid = receiverid;
-    db.receivername = receivername;
-    db.message = message;
-    db.date = date;
-    db.save(function (err) {
-        if (err) {
-            response = {
-                "error": true,
-                "message": "error storing data"
-            }
-        }
-        else {
-            console.log("testing......");
-            response = { "error": false, "message": "succesfully added to database" }
-        }
-    });
-    console.log(response)
-
-}
 
 
 exports.getmg = function (req, res) {
     var userModel = require('../model/messages');
     var response = {};
-    userModel.find({}, function (err, data) {
+    userModel.find({}, function(err,data) {
         if (data) {
             response = {
                 "error": false,
@@ -156,11 +131,39 @@ exports.getmg = function (req, res) {
 }
 
 
+exports.singlechat = function (message,senderid,receiverid,sendername,receivername,date) {
+    var userModel = require('../model/singlechat');
+    var db = new userModel();
+    var response = {};
+    db.message = message;
+    db.senderid = senderid;
+    db.receiverid = receiverid;
+    db.sendername = sendername;
+    db.receivername = receivername;
+    db.date = date;
+    db.save(function (err) {
+        if (err) {
+            response = {
+                "error": true,
+                "message": "error storing data"
+            }
+        }
+        else {
+            console.log("testing......");
+            response = { "error": false, "message": "succesfully added to database" }
+        }
+    });
+    console.log(response)
+
+}
+
 
 exports.getsinglechat = function (req, res) {
     var userModel = require('../model/singlechat');
     var response = {};
-    userModel.find({}, function (err, data) {
+    var receiverid=req.params.receiverid;
+    var senderid=req.params.senderid;
+    userModel.find({$or:[{'receiverid':receiverid,'senderid':senderid},{'senderid':receiverid,'receiverid':senderid}]}, function (err, data) {
         if (data) {
             response = {
                 "error": false,

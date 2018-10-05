@@ -28,9 +28,18 @@ io.on('connection', function (client) {
    
 
 client.on('tobackend',function (data) {
+
+    console.log('...........................');
+    
     users.addtodb(data.userid,data.message,data.date, data.username);
                 // data.userid, data.username,
     io.emit('tofrontend',data)
+})
+client.on('singleChatBackend',function(data){
+    console.log(data.receiverid);
+    
+    users.singlechat(data.message,data.senderid,data.receiverid,data.sendername,data.receivername,data.date)
+    io.emit(data.receiverid,data);
 })
 
 })
